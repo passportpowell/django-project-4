@@ -25,5 +25,8 @@
    "terminal.integrated.gpuAcceleration": "canvas",
    "editor.defaultFormatter": "HookyQR.beautify",
    "editor.tabCompletion": "on",
-   "diffEditor.codeLens": true
+   "diffEditor.codeLens": true,
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.python"
+   }
 }
