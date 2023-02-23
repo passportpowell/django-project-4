@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">{% trans "Sign In" %}</h3>
+        </div>
+        <div class="card-body">
+
+          <p class="text-center">{% blocktrans %}Welcome back to Birmingham's No1 Meet Up Group. {% endblocktrans %}</p>
+
+          <form class="login align-items-center" method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button class="btn btn-primary btn-block mx-auto" type="submit">{% trans "Sign In" %}</button>
+          </form>
+<hr>  
+          <p class="text-center align-items-center">{% blocktrans %}Please log in to Attend Events, Leave Comments and Like Post.
+            You can create an account <a class="link" href="{{ signup_url }}">sign up</a>
+            first.{% endblocktrans %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

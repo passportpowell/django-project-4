@@ -28,11 +28,10 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
-    def likes_count(self):
+
+    def likes_count(self, *, manager):
         return self.likes()
 
-    def __str__(self):
-        return self.name
 
 
 class Attendee(models.Model):
@@ -49,7 +48,7 @@ class UserComment(models.Model):
     user = models.CharField(max_length=50)
     posted_comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    accepted = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['created_at']
@@ -58,12 +57,7 @@ class UserComment(models.Model):
         return f"UserComment {self.posted_comment} by {self.user}"
 
 
-class Attendee(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return f"{self.user.username} - {self.event.name}"
 
 
 # TO FIX - IF YOU ADD SOMETHING OR CHANGE SOMETHING YOU MUST
@@ -72,3 +66,7 @@ class Attendee(models.Model):
 # 'str' object has no attribute 'username'), when trying to post a UserComment
 #     - solution: checking through the code i saw that i needed to  change the
 #         user field to a foreign key to the User model
+
+# to fix - was receiveing TypeError at /event-test-this-is-the-slug/
+# __call__() missing 1 required keyword-only argument: 'manager'
+#     solution: was to change the method of likes_count to def likes_count(self, *, manager):

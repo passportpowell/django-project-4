@@ -20,8 +20,8 @@ class EventAdmin(SummernoteModelAdmin):
 
 @admin.register(UserComment)
 class UserCommentAdmin(admin.ModelAdmin):
-    list_display = ('event', 'user', 'posted_comment', 'created_at', 'accepted')
-    list_filter = ('accepted', 'created_at')
+    list_display = ('event', 'user', 'posted_comment', 'created_at', 'approved')
+    list_filter = ('approved', 'created_at')
     search_fields = ('event', 'posted_comment')
     actions = ['approve_comments']
 
