@@ -58,12 +58,12 @@ class UserComment(models.Model):
         return f"UserComment {self.posted_comment} by {self.user}"
 
 
-# class Attendee(models.Model):
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+class Attendee(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
-#     def __str__(self):
-#         return f"{self.user.username} - {self.event.name}"
+    def __str__(self):
+        return f"{self.user.username} - {self.event.name}"
 
 
 # TO FIX - IF YOU ADD SOMETHING OR CHANGE SOMETHING YOU MUST

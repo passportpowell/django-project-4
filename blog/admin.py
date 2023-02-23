@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, UserComment
+from .models import Event, UserComment, Attendee
 from django_summernote.admin import SummernoteModelAdmin
 
 #this should register the Event model and EventAdmin class
@@ -29,8 +29,8 @@ class UserCommentAdmin(admin.ModelAdmin):
         queryset.update(approved=True)
 
 
-# @admin.register(Attendee)
-# class UserAttendee(admin.ModelAdmin):
-#     list_display = ('event', 'user')
-#     list_filter = ('event', 'user')
-#     search_fields = ('event', 'posted_comment')
+@admin.register(Attendee)
+class UserAttendee(admin.ModelAdmin):
+    list_display = ('event', 'user')
+    list_filter = ('event', 'user')
+    search_fields = ('event', 'posted_comment')

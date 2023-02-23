@@ -13,27 +13,28 @@
           <div class="card mb-4">
             <div class="card-body">
               <div class="image-container">
+                <!-- to fix - change images -->
                 {% if "placeholder" in event.featured_image.url %}
-                <!-- change the images below image -->
                 <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
                 {% else %}
-                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                <img class="card-img-top" src=" {{ event.featured_image.url }}">
                 {% endif %}
                 <div class="image-flash">
                   <p class="author">Author: {{ event.creator }}</p>
                 </div>
               </div>
-              <a href="#" class="post-link">
+              <a href="{% url 'schedule' event.slug %}" class="post-link">
+                <!-- <a href="{% url 'schedule' post.slug  %}" class="post-link"> -->
                 <h2 class="card-title">{{ event.title }}</h2>
                 <p class="card-text">{{ event.excerpt }}</p>
               </a>
               <hr />
               <p class="card-text text-muted h6">{{ event.published_date}} <i class="far fa-heart"></i>
-                {{ event.likes_count }}</p>
+                {{ event.like_count }}</p>
             </div>
           </div>
         </div>
-        {% if forloop.counter|divisibleby:2 %}
+        {% if forloop.counter|divisibleby:3 %}
       </div>
       <div class="row">
         {% endif %}

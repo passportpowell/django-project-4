@@ -5,6 +5,6 @@ from . import views
 
 urlpatterns = [
     path('', views.EventList.as_view(), name='home'),
-    path('<slug:slug>/', views.EventDetails.as_view(), name='schedule'),
+    #path('<slug:slug>/', views.EventDetails.as_view(), name='home'),
 
 ]
