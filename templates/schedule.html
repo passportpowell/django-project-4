@@ -30,13 +30,27 @@
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
                 <p class="card-text ">
-                    {{ event_info.content | safe }}
-                </p>
-                <div class="row">
+                    {% comment %} {{ event_info.content | safe }} {% endcomment %}
+                    {{ event.event_info | safe }}                
+                    <div class="row">
 
                     <div class="col-1">
-                        <!-- The number of likes goes before the closing strong tag -->
-                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ event.likes_count }} </strong>
+
+                        <strong>
+                            {% if user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'attending_event' event.slug %}" method="POST">
+                                {% csrf_token %}
+                                {% if liked %}
+                                <button type="submit" name="blogpost_id" value="{{event.slug}}" class="btn-like"><i class="fas fa-heart"></i></button>
+                                {% else %}
+                                <button type="submit" name="blogpost_id" value="{{event.slug}}" class="btn-like"><i class="far fa-heart"></i></button>
+                                {% endif %}
+                            </form>
+                            {% else %}
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                            <span class="text-secondary">{{ event.likes_count }}<i class="far fa-heart"></i></span>
+                        </strong>
                     </div>
                     <div class="col-1">
                         {% with user_comments.count as total_comments %}
@@ -102,3 +116,6 @@
 </div>
 
 {% endblock content %}
+
+{% comment %} posts weren't shouwing the event info text.. fix was to add 
+{{ event.event_info | safe }} and keep "|safe" as i removed it. {% endcomment %}

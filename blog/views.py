@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
-from django.views.generic import ListView
+from django.http import HttpResponseRedirect
 from .forms import CommentForm
 
 from .models import Event, UserComment, Attendee
@@ -20,6 +21,7 @@ class EventDetails(View):
         event = get_object_or_404(queryset, slug=slug)
         user_comments = event.usercomments.filter(
             approved=True).order_by("created_at")
+        description = event.description
         user_liked = False
         if event.likes.filter(id=self.request.user.id).exists():
             user_liked = True
@@ -29,6 +31,7 @@ class EventDetails(View):
             "schedule.html",
             {
                 "event": event,
+                "description": Event.description,
                 "event_info": event.event_info,
                 "comments": user_comments,
                 "liked": user_liked,
@@ -69,6 +72,28 @@ class EventDetails(View):
                 "commented": commented,
             },
         )
+
+
+class EventAttendee(View):
+
+    def post(self, request, slug, *args, **kwargs):
+        event = get_object_or_404(Event, slug=slug)
+        if event.likes.filter(id=self.request.user.id).exists():
+            event.likes.remove(request.user)
+        else:
+            event.likes.add(request.user)
+
+        return HttpResponseRedirect(reverse('upcoming', args=[slug])) 
+
+
+    # def post(self, request, slug, *args, **kwargs):
+    #     post = get_object_or_404(Post, slug=slug)
+    #     if event.user_liked.filter(id=self.request.user.id).exists():
+    #         vent.user.liked.remove(request.user) 
+    #     else:
+    #         event.user_liked.add(request.user)
+
+    #     return HttpResponseRedirect(reverse('schedule', args=[slug])) 
 
 
 # Use class for the views.py as you can make the view reusable

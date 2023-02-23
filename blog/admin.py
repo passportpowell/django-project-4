@@ -11,10 +11,9 @@ class EventAdmin(SummernoteModelAdmin):
     #adds a filter box
     list_filter = ('status', 'published_date')
     # adds a search box
-    search_fields = ['title', 'content']
+    search_fields = ['title', 'event_info']
     # lists different categroy across top bar
     list_display = ('title', 'slug', 'status', 'published_date')
-    # 
     summernote_fields = ("event_info")
 
 
