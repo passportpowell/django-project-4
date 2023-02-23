@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
+from django.views.generic import ListView
+
 from .models import Event
 # Create your views here.
 
@@ -14,7 +16,6 @@ class EventList(generic.ListView):
 
 
 class EventDetails(View):
-
     def get(self, request, slug, *args, **kwargs):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
