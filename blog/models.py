@@ -15,8 +15,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Event(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="event_posts")
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="event_posts", default=1)
     description = models.TextField()
     location = models.TextField()
     likes = models.ManyToManyField(User, related_name='event_likes', blank=True)
@@ -25,6 +24,7 @@ class Event(models.Model):
     event_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    featured_image = CloudinaryField('image', default='placeholder')
 
 
     def __str__(self):

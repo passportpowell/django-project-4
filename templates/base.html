@@ -4,7 +4,7 @@
 <html class="h-100">
 
 <head>
-    <title>PassportPowell Blog</title>
+    <title>Passport Powell</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -24,54 +24,66 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">c<span class="red-o">o</span>de<span
-                        class="thin">|star</span></span></span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
             <div class="collapse navbar-collapse" id="navbarText">
+
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link" href="#">Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                        <a class="nav-link" href="#">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link" href="#">Login</a>
                     </li>
                     {% endif %}
-
                 </ul>
-                <span class="navbar-text text-muted">
-                    adventures of a software developer
-                </span>
+
+
             </div>
+
+            <div class="text-center">
+                <a class="navbar-brand" href="#">BIRMINGHAM'S
+                    TRAVELERS MEET UP
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto justify-content-end">
+                    <!-- <li class="nav-item">
+                    <a class="nav-link active" href="index.html" title="Home" aria-label="Go to Home Page (opens in current tab)">Home</a>
+                  </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="past-meets.html" title="Gallery"
+                            aria-label="Go to Gallery page (opens in current tab)">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="game.html" title="Game"
+                            aria-label="Go to Game page (opens in current tab)">Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.html" title="Sign Up"
+                            aria-label="Go to Sign up Page (opens in current tab)">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html" title="schedule"
+                            aria-label="Go to Schedule Page (opens in current tab)">Schedule</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                    {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
 
     <main class="flex-shrink-0 main-bg">
-
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
@@ -85,13 +97,6 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
-    <script>
-        setTimeout(function () {
-            let messages = document.getElementById('msg');
-            let alert = new bootstrap.Alert(messages);
-            alert.close();
-        }, 2000);
-    </script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views import generic
+from django.shortcuts import render, get_object_or_404
+from django.views import generic, View
 from .models import Event
 # Create your views here.
 
@@ -9,5 +9,30 @@ class EventList(generic.ListView):
     queryset = Event.objects.filter(status=1).order_by('-published_date')
     template_name = 'index.html'
     paginate_by = 4
+
+
+
+
+class EventDetails(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Event.objects.filter(status=1)
+        event = get_object_or_404(queryset, slug=slug)
+        user_comments = event.comments.filter(accepted=True).order_by(
+            "created_at")
+        user_liked = False
+        if Event.likes.filter(id=self.request.user.id).exists():
+            user_liked = True
+
+        return render(
+            request,
+            "schedule.html",
+            {
+                "event": event,
+                "comments": user_comments,
+                "liked": user_liked
+            },
+        )
+
 
 # Use class for the views.py as you can make the view reusable
