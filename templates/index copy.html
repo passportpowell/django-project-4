@@ -1,60 +1,98 @@
-{% extends "base.html" %}
-
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+{% endblock %}
 {% block content %}
 
-<div class="container-fluid">
-  <div class="row">
+{% comment %} <style>
+    .carousel-caption {
+      position: absolute;
+      top: 50px; /* adjust this value to position the caption below the nav bar */
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+    </style> {% endcomment %}
 
-    <!-- Blog Entries Column -->
-    <div class="col-12 mt-3 left">
-      <div class="row">
-        {% for event in event_list %}
-        <div class="col-md-4">
-          <div class="card mb-4">
-            <div class="card-body">
-              <div class="image-container">
-                <!-- to fix - change images -->
-                {% if "placeholder" in event.featured_image.url %}
-                <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
-                {% else %}
-                <img class="card-img-top" src=" {{ event.featured_image.url }}">
-                {% endif %}
-                <div class="image-flash">
-                  <p class="author">Author: {{ event.creator }}</p>
-                </div>
-              </div>
-              <a href="{% url 'schedule' event.slug %}" class="post-link">
-                <!-- <a href="{% url 'schedule' post.slug  %}" class="post-link"> -->
-                <h2 class="card-title">{{ event.title }}</h2>
-                <p class="card-text">{{ event.excerpt }}</p>
-              </a>
-              <hr />
-              <p class="card-text text-muted h6">{{ event.published_date}} <i class="far fa-heart"></i>
-                {{ event.like_count }}</p>
-            </div>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex align-items-start">
+          <img class="d-block w-100 opacity-50" src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677248343/static/Hero%20images/Hero%20Image%20Project%204.webp" alt="Birmingham">
+          <div class="carousel-caption">
+            {% comment %} <h1 class="display-1 font-weight-bold text-body">BIRMINGHAM'S
+                    TRAVELERS MEET UP</h1> {% endcomment %}
+            {% comment %} <h5 class="display-1 font-weight-bold text-body">Join our Growing Community of 1500+ Travelers and Locals!
+                <br>
+                Weekly Events, Fun & Games!</h5> {% endcomment %}
+                <p class="text-center" style="color: white; text-shadow: 1px 1px 2px black;">Join our Growing Community of 1500+ Travelers and Locals!
+                    <br>
+                    Weekly Events, Fun & Games!
+                </p>
+                
+            </p> 
           </div>
         </div>
-        {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">
-        {% endif %}
-        {% endfor %}
-
       </div>
     </div>
-  </div>
-  {% if is_paginated %}
-  <nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-      {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
-      {% endif %}
-      {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+</div>
 
-      {% endif %}
-    </ul>
-  </nav>
-  {% endif %}
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for event in event_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                <!-- to fix - change images -->
+                                {% if "placeholder" in event.featured_image.url %}
+                                <img class="card-img-top"
+                                    src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg">
+                                {% else %}
+                                <img class="card-img-top" src=" {{ event.featured_image.url }}">
+                                {% endif %}
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ event.creator }}</p>
+                                </div>
+                            </div>
+                            <a href="{% url 'upcoming' event.slug  %}" class="post-link">
+                                <h2 class="card-title">{{ event.title }}</h2>
+                                <p class="card-text">{{ event.excerpt }}</p>
+                            </a>
+                            <hr />
+                            <p class="card-text text-muted h6">{{ event.published_date}} <i class="far fa-heart"></i>
+                                {{ event.like_count }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 </div>
 {%endblock%}
