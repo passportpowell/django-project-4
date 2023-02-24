@@ -8,21 +8,23 @@ from .models import Event, UserComment, Attendee
 # Create your views here.
 
 
-def home(request):
-    context = {
-        'page': 'home',
-    }
-    return render(request, 'home.html', context)
+# def home(request):
+#     context = {
+#         'page': 'home',
+#     }
+#     return render(request, 'home.html', context)
 
 class EventList(generic.ListView):
     model = Event
     queryset = Event.objects.filter(status=1).order_by('-published_date')
     template_name = 'index.html'
     paginate_by = 4
+
     def get_context_data(self, **kwargs):
         context = super(EventList, self).get_context_data(**kwargs)
         context['page'] = 'upcoming-events'
         return context
+
 
 class EventDetails(View):
     def get(self, request, slug, *args, **kwargs):

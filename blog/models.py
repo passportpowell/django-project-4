@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-from django.urls import reverse
+from django.urls import reverse 
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -28,10 +28,8 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
-
     def likes_count(self, *, manager):
         return self.likes()
-
 
 
 class Attendee(models.Model):
@@ -55,9 +53,6 @@ class UserComment(models.Model):
 
     def __str__(self):
         return f"UserComment {self.posted_comment} by {self.user}"
-
-
-
 
 
 # TO FIX - IF YOU ADD SOMETHING OR CHANGE SOMETHING YOU MUST
