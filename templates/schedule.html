@@ -5,16 +5,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
 
-
-
 {% block content %}
 
+<div>
 <ul>
 {% for event in object_list %}
 <li>{{event.featured_image.url}}
     {{ event.title }} - {{ event.excerpt }}<br/>
     {{ event.event_info }}</li>
 </ul>
+</div>
 
 {% endfor %}
 

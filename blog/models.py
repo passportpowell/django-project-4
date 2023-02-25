@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
-from django.urls import reverse 
+from django.urls import reverse
+from datetime import datetime
+
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -9,16 +11,15 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class Event(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    creator = models.ForeignKey(
+    organiser = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="event_posts", default=1)
-    description = models.TextField()
+    event_info = models.TextField()
     location = models.TextField()
-    likes = models.ManyToManyField(
+    time_date = models.DateTimeField(blank=True, null=True)
+    # time_date = models.TextField(blank=True)
+    attending = models.ManyToManyField(
         User, related_name='event_likes', blank=True)
     published_date = models.DateTimeField(auto_now=True)
-    event_info = models.TextField()
-    event_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
 
@@ -30,6 +31,10 @@ class Event(models.Model):
 
     def likes_count(self, *, manager):
         return self.likes()
+
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
 
 class Attendee(models.Model):

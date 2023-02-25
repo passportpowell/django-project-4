@@ -1,66 +1,40 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
-{% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-{% endblock %}
-{% block content %}
-
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> {% endblock %} {% block content %}
 <!-- This code extends the 'base.html' template and loads crispy forms tags and static files. 
 The 'head' block adds a link to a stylesheet. The 'content' block begins here. -->
 <div class="game-area">
-    <div class="game-container">
-        <div class="result"></div>
-        <div id="results-display">
-
-            <div class="score">
-                <p id="display"> Score </p>
-                <h1 id="total">0</h1>
-            </div>
-    
-    
-        </div>
-    
-        <div class="questionsss" id="questionss">
-            <h3 id="question">What is the Capital of ?</h3>
-    
-        </div>
-        <div class="choices-area">
-            <button class="options" id="option1" data-number="1">option1</button>
-    
-            <button class="options" id="option2" data-number="2">option2</button>
-    
-            <button class="options" id="option3" data-number="3">option3</button>
-    
-            <button class="options" id="option4" data-number="4">option4</button>
-        </div>
-        <div class="reset-skip-area">
-            <a href={% url 'Game' %}  class="reset" aria-label="Reset Button"> Reset</a>
-    
-        </div>
+  <div class="game-container">
+    <div class="result"></div>
+    <div id="results-display">
+      <div class="score">
+        <p id="display"> Score </p>
+        <h1 id="total">0</h1>
+      </div>
     </div>
-    
+    <div class="questionsss" id="questionss">
+      <h3 id="question">What is the Capital of ?</h3>
+    </div>
+    <div class="choices-area">
+      <button class="options" id="option1" data-number="1">option1</button>
+      <button class="options" id="option2" data-number="2">option2</button>
+      <button class="options" id="option3" data-number="3">option3</button>
+      <button class="options" id="option4" data-number="4">option4</button>
+    </div>
+    <div class="reset-skip-area">
+      <a href={% url 'Game' %} class="reset" aria-label="Reset Button"> Reset</a>
+    </div>
+  </div>
 </div>
-
 <hr>
 <!-- This code inserts a horizontal line. -->
 <div class="text-center">
-    <h1 class="mb-4">Capital Cities Quiz</h1>
-    <h3 class="mb-3">Test Your Capital Cities Knowledge With Our Short Quiz!</h3>
-    <h4 class="mb-4">10 Questions! Can You Get 50 Points?</h4>
+  <h1 class="mb-4">Capital Cities Quiz</h1>
+  <h3 class="mb-3">Test Your Capital Cities Knowledge With Our Short Quiz!</h3>
+  <h4 class="mb-4">10 Questions! Can You Get 50 Points?</h4>
 </div>
 <!-- This section contains a header with a quiz title, description and a question count. -->
-
 </footer>
-
-    <script type="text/javascript" src="{% static 'script.js' %}"></script>
-
-</div>
-{% endblock %}
-
-<!-- This code loads a JavaScript file from the static folder. The 'content' block ends here. -->
-{% comment %}
-to fix - js wouldn't load, was receiving server 500 error
-fixed by:turnning debug on and finding that i had not put my load static and js static in the correct places {% endcomment %}
-
+<script type="text/javascript" src="{% static 'script.js' %}"></script>
+</div> {% endblock %}
+<!-- This code loads a JavaScript file from the static folder. The 'content' block ends here. --> {% comment %} to fix - js wouldn't load, was receiving server 500 error fixed by:turnning debug on and finding that i had not put my load static and js static in the correct places {% endcomment %}
 <!-- This is a comment about a fix to a JavaScript error. -->

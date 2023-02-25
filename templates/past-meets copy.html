@@ -1,41 +1,42 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
-{% block head %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-{% endblock %}
-{% block content %}
-  <div class="container my-5">
-    <h2 class="text-center mb-5">Travel Gallery</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="{% static 'img/gallery1.jpg' %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Istanbul, Turkey</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="{% static 'img/gallery2.jpg' %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Santorini, Greece</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="{% static 'img/gallery3.jpg' %}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Tokyo, Japan</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} {% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}"> {% endblock %} {% block content %} {% comment %} TRAVEL Gallery {% endcomment %} <div class="container my-5">
+  <h2 class="text-center mb-5">Gallery</h2>
+</div>
+<section class="gallery">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336358/static/Travel/2018_1_Bali_Canggu_Denpasar_Indonesia_Jan_6_xjiaa5.jpg" alt="Bali Idonesia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336357/static/Travel/2018_1_Bali_Canggu_Denpasar_Indonesia_Jan_2_lpjlj7.jpg" alt="Bali Indonesia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336357/static/Travel/2017_11_Vienna_Austria_Nov_22_s9ihc3.jpg" alt="viena">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336357/static/Travel/2017_11_Bratislava_Slovakia_Nov_26_jwy2gu.jpg" alt="slovakia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336357/static/Travel/2017_11_Bratislava_Slovakia_Nov_27_hcw4tj.jpgg" alt="slovakia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336356/static/Travel/2017_11_Vienna_Austria_Nov_6_szpfs6.jpg" alt="vienna">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336356/static/Travel/2017_11_Bratislava_Slovakia_Nov_21_bywvwu.jpg" alt="slovakia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336356/static/Travel/2017_11_Bratislava_Slovakia_Nov_58_zcsqus.jpg" alt="slovakia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336356/static/Travel/2018_1_Bali_Canggu_Denpasar_Indonesia_Jan_8_ycle2w.jpg" alt="bali">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336356/static/Travel/2017_11_Vienna_Austria_Nov_12_sca9ar.jpg" alt="vienna">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336318/static/Travel/2017_6_UAE_Dubai_Ras_Al_Khaimah_21_ne7f1k.jpg" alt="UAE">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336318/static/Travel/2017_6_UAE_Dubai_Ras_Al_Khaimah_19_ejpib3.jpg" alt="Ras al Khaimah">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336318/static/Travel/2017_6_UAE_Dubai_Ras_Al_Khaimah_53_b3khcq.jpg" alt="dubai">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336318/static/Travel/2017_6_UAE_Dubai_Ras_Al_Khaimah_26_jnypok.jpg" alt="uae">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336318/static/Travel/2017_7_Brussels_Belgium_July_49_gryxcz.jpg" alt="belgium">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336317/static/Travel/2017_6_UAE_Dubai_Ras_Al_Khaimah_18_gywths.jpg" alt="dubai">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336219/static/Travel/2017_5_Sofia_Bulgaria_May_2_nu5jj0.jpg" alt="Bulgaria Sofia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336219/static/Travel/2017_1_Beauvais_France_Jan_3_fxwxwm.jpg" alt="Beavais France">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336219/static/Travel/2017_5_Sofia_Bulgaria_May_9_h0glx8.jpg" alt="bulgaria sofia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336219/static/Travel/2017_6_UAE_Dubai_Ras_Al_Khaimah_1_reoyh4.jpg" alt="dubai">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336219/static/Travel/2017_1_Arachova_Greece_Jan_26_vjsaz8.jpg" alt="greece arachova">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336218/static/Travel/2017_1_Arachova_Greece_Jan_11_f0ftqc.jpg" alt="arachova">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336162/static/Travel/2017_1_Athens_Greece_Jan_8_ieozd8.jpg" alt="Athens Greece">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336161/static/Travel/2017_1_Athens_Greece_Jan_13_met3kv.jpg" alt="Athens Greece">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677336161/static/Travel/2016_10_Croatia_Split_Dubrovnik_Korcula_133_sg3arx.jpg" alt="croatia">
+  <img src="https://res.cloudinary.com/dbqkng7cd/image/upload/v1677338322/static/Travel/2014_11_Spain_Madrid_November_81_c5oqmc.jpg" alt="Spain">
+  <img src="" alt="">
+  <img src="" alt="">
+  <img src="" alt="">
+  <img src="" alt="">
+  <img src="" alt="">
+  <img src="" alt="">
+  <img src="" alt="">
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary-core/2.13.0/cloudinary-core-shrinkwrap.min.js" 
+  integrity="sha512-qUcVYUv+/17Fb50QtwjKjmZVbHjT6hXg7i8M6UjV6Ukkv6n0Vy6ONgikEtZBLERzEGKemv9XqfbTZ8rB1rqu+w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> {% endblock %}

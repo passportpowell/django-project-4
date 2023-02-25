@@ -1,157 +1,124 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html class="h-100">
-
-<head>
+  <head>
     <title>Passport Powell</title>
-
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Mobile Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!-- Custom Styles --> {% comment %} Added styles for vertical display of blog entries {% endcomment %} {% comment %} <style>
+      .blog-entry {
+        margin-bottom: 30px;
+      }
 
-    {% comment %} <style>
-        /* Added styles for vertical display of blog entries */
-        .blog-entry {
-            margin-bottom: 30px;
-        }
-        .blog-entry-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        .blog-entry-content {
-            font-size: 1rem;
-            line-height: 1.5;
-        }
+      .blog-entry-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .blog-entry-content {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
     </style> {% endcomment %}
-
-</head>
-
-<body class="d-flex flex-column h-100 main-bg">
-
+  </head>
+  <body class="d-flex flex-column h-100 main-bg">
     <!-- Navigation -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-      
-          <!-- Start of left-aligned menu items -->
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      
-              <!-- Home link -->
-              <li class="nav-item">
-                <a class="nav-link {% if page == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
-              </li>
-      
-              <!-- If user is authenticated, display Logout link, else display Register and Login links -->
-              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-              </li>
-              {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-              </li>
-              {% endif %}
-      
-            </ul>
-          </div>
-          <!-- End of left-aligned menu items -->
-      
-          <!-- Start of centered brand/logo -->
-          <div class="text-center">
-            <a class="navbar-brand" href="{% url 'home' %}">BIRMINGHAM'S TRAVELERS MEET UP</a>
-          </div>
-          <!-- End of centered brand/logo -->
-      
-          <!-- Start of right-aligned menu items -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto justify-content-end">
-      
-              <!-- Quiz link -->
-              <li class="nav-item {% if page == 'Game' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'Game' %}">Quiz</a>
-              </li>
-      
-              <!-- Gallery link -->
-              <li class="nav-item {% if page == 'gallery' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'gallery' %}" aria-label="Go to Gallery page (opens in current tab)">Gallery 3</a>
-              </li>
-      
-              <!-- Schedule link (commented out) -->
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="schedule.html" title="detail" aria-label="Go to Schedule Page (opens in current tab)">Schedule</a>
-              </li> -->
-      
-            </ul>
-          </div>
-          <!-- End of right-aligned menu items -->
-      
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-menu">
+      <div class="container-fluid">
+        <!-- Start of left-aligned menu items -->
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- Home link -->
+            <li class="nav-item">
+              <a class="nav-link {% if page == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+            </li>
+            <!-- If user is authenticated, display Logout link, else display Register and Login links --> {% if user.is_authenticated %} <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+            </li> {% else %} <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+            </li> {% endif %}
+          </ul>
         </div>
-      </nav>
-      
-
-    <div class="container" >
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
-                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                    {{ message | safe }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-            </div>
+        <!-- End of left-aligned menu items -->
+        <!-- Start of centered brand/logo -->
+        <div class="text-center">
+          <a class="navbar-brand" href="{% url 'home' %}">BIRMINGHAM'S TRAVELERS MEET UP</a>
         </div>
+        <!-- End of centered brand/logo -->
+        <!-- Start of right-aligned menu items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto justify-content-end">
+            <!-- Quiz link -->
+            <li class="nav-item {% if page == 'Game' %}active{% endif %}">
+              <a class="nav-link" href="{% url 'Game' %}">Quiz</a>
+            </li>
+            <!-- Gallery link -->
+            <li class="nav-item {% if page == 'gallery' %}active{% endif %}">
+              <a class="nav-link" href="{% url 'gallery' %}" aria-label="Go to Gallery page (opens in current tab)">Gallery</a>
+            </li>
+            <!-- Events link (commented out) -->
+            <li class="nav-item">
+            <li class="nav-item">
+              <a class="nav-link" href="#anchor-name">Events</a>
+            </li>
+            <!--  to fix - code bewlow to jump to the href location from another page in the same doman -->
+            <!-- <li class="nav-item"><a class="nav-link" href="{% url 'home' %}/#anchor-name" target="_self">Events</a></li> -->
+          </ul>
+        </div>
+        <!-- End of right-aligned menu items -->
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 offset-md-2"> {% for message in messages %} <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+            {{ message | safe }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div> {% endfor %} </div>
+      </div>
     </div>
-
-
-    <main class="flex-shrink-0 main-bg">
-        {% block content %}
-        <!-- Content Goes here -->
-        {% endblock content %}
+    <main class="flex-shrink-0 main-bg"> {% block content %}
+      <!-- Content Goes here --> {% endblock content %}
     </main>
-
     <!-- Footer -->
     <footer class="footer mt-auto py-3 bg-dark text-center">
-        <p class="m-0 text-center text-white d-flex justify-content-center socials">Follow us: 
-            <li><a href="https://facebook.com/passportpowell" class="text-muted"><i class="fab fa-facebook-f fa-lg me-2" style="color: #3b5998; margin-right: 15px;"></i>Facebook</a></li>
-            <li><a href="https://instagram.com/passportpowell/" class="text-muted"><i class="fab fa-instagram fa-lg me-2" style="color: #ac2bac; margin-right: 15px;"></i>Instagram</a></li>
-            <li><a href="https://youtube.com/otisofro2" class="text-muted"><i class="fab fa-youtube fa-lg me-2" style="color: #ff0000; margin-right: 15px;"></i>Youtube</a></li>
-        </p>
-        
-        
-      </footer>
-      <script>
-        setTimeout(function () {
-            let messages = document.getElementById('msg');
-            let alert = new bootstrap.Alert(messages);
-            alert.close();
-        }, 1500);
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-        
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="{% static 'script.js' %}"></script>
-        <script src="https://kit.fontawesome.com/d5114a4b10.js" crossorigin="anonymous"></script>
-                
+      <p class="m-0 text-center text-white d-flex justify-content-center socials">Follow us: <li>
+          <a href="https://facebook.com/passportpowell" class="text-muted">
+            <i class="fab fa-facebook-f fa-lg me-2" style="color: #3b5998; margin-right: 15px;"></i>Facebook </a>
+        </li>
+        <li>
+          <a href="https://instagram.com/passportpowell/" class="text-muted">
+            <i class="fab fa-instagram fa-lg me-2" style="color: #ac2bac; margin-right: 15px;"></i>Instagram </a>
+        </li>
+        <li>
+          <a href="https://youtube.com/otisofro2" class="text-muted">
+            <i class="fab fa-youtube fa-lg me-2" style="color: #ff0000; margin-right: 15px;"></i>Youtube </a>
+        </li>
+      </p>
+    </footer>
+    <script>
+      setTimeout(function() {
+        let messages = document.getElementById('msg');
+        let alert = new bootstrap.Alert(messages);
+        alert.close();
+      }, 1500); < script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" >
     </script>
-
-
-</body>
-
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'script.js' %}"></script>
+    <script src="https://kit.fontawesome.com/d5114a4b10.js" crossorigin="anonymous"></script>
+    </script>
+  </body>
 </html>

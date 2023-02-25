@@ -32,14 +32,13 @@ class EventDetails(View):
         event = get_object_or_404(queryset, slug=slug)
         user_comments = event.usercomments.filter(
             approved=True).order_by("created_at")
-        description = event.description
+        description = event.event_info
         user_liked = False
-        if event.likes.filter(id=self.request.user.id).exists():
+        if event.attending.filter(id=self.request.user.id).exists():
             user_liked = True
 
         context = {
                 "event": event,
-                "description": Event.description,
                 "event_info": event.event_info,
                 "comments": user_comments,
                 "liked": user_liked,
