@@ -1,18 +1,10 @@
 
-from django.shortcuts import render, get_object_or_404, reverse
+from .models import Event
+from .forms import CommentForm
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .forms import CommentForm
+from django.shortcuts import render, get_object_or_404, reverse
 
-from .models import Event, UserComment, Attendee
-# Create your views here.
-
-
-# def home(request):
-#     context = {
-#         'page': 'home',
-#     }
-#     return render(request, 'home.html', context)
 
 class EventList(generic.ListView):
     model = Event
@@ -21,7 +13,7 @@ class EventList(generic.ListView):
     paginate_by = 4
 
     def get_context_data(self, **kwargs):
-        context = super(EventList, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['page'] = 'upcoming-events'
         return context
 
@@ -33,15 +25,15 @@ class EventDetails(View):
         user_comments = event.usercomments.filter(
             approved=True).order_by("created_at")
         description = event.event_info
-        user_liked = False
+        attending = False
         if event.attending.filter(id=self.request.user.id).exists():
-            user_liked = True
+            attending = True
 
         context = {
                 "event": event,
                 "event_info": event.event_info,
                 "comments": user_comments,
-                "liked": user_liked,
+                "attending": attending,
                 "comment_form": CommentForm(),
                 "commented": False,
                 "page": "event-details"
@@ -54,9 +46,9 @@ class EventDetails(View):
         event = get_object_or_404(queryset, slug=slug)
         user_comments = event.usercomments.filter(
             approved=True).order_by("created_at")
-        user_liked = False
-        if event.likes.filter(id=self.request.user.id).exists():
-            user_liked = True
+        attending = False
+        if event.attending.filter(id=self.request.user.id).exists():
+            attending = True
 
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -73,7 +65,7 @@ class EventDetails(View):
                 "event": event,
                 "event_info": event.event_info,
                 "comments": user_comments,
-                "liked": user_liked,
+                "attending": attending,
                 "comment_form": comment_form,
                 "commented": commented,
                 "page": "event-details"
@@ -86,10 +78,10 @@ class EventAttendee(View):
 
     def post(self, request, slug, *args, **kwargs):
         event = get_object_or_404(Event, slug=slug)
-        if event.likes.filter(id=self.request.user.id).exists():
-            event.likes.remove(request.user)
+        if event.attending.filter(id=self.request.user.id).exists():
+            event.attending.remove(request.user)
         else:
-            event.likes.add(request.user)
+            event.attending.add(request.user)
 
         return HttpResponseRedirect(reverse('upcoming', args=[slug])) 
 

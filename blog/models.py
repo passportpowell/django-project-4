@@ -16,9 +16,8 @@ class Event(models.Model):
     event_info = models.TextField()
     location = models.TextField()
     time_date = models.DateTimeField(blank=True, null=True)
-    # time_date = models.TextField(blank=True)
     attending = models.ManyToManyField(
-        User, related_name='event_likes', blank=True)
+        User, related_name='attending_event', blank=True)
     published_date = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
@@ -29,9 +28,8 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
-    def likes_count(self, *, manager):
-        return self.likes()
-
+    def attending_count(self, *, manager):
+        return self.attending()
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

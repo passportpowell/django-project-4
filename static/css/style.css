@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap');
 
-/* body {
-    font-family: 'Roboto Slab', serif;
-    background: url(../images/europe.webp);
-    background-attachment: fixed;
-    padding-top: 50px;
-} */
+.navbar{
+    border-radius: 0
+}
+
+.navbar-brand{
+    font-family: 'satisfy', cursive;
+}
+
+li > a {
+    color: white;
+}
 
 h1,
 h2,
@@ -18,43 +23,21 @@ h4 {
 }
 
 /* Styling for the navigation bar */
-nav {
+/* nav {
     background-color: #333;
     color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 10px;
-}
+} */
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
 
-nav ul li {
-    margin-right: 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px;
-}
-
-/* Styling for the hover effect of navigation bar links */
-nav ul li a:hover {
-    background-color: #555;
-}
 
 /* Styling for the main blog section */
-#all-blogs {
+/* #all-blogs {
     display: grid;
     grid-template-columns: auto auto auto;
-}
-
-
+} */
 
 /* Styling for the carousel captions */
 .carousel-caption {
@@ -209,22 +192,64 @@ a {
     column-count: 4;
     column-gap: 0;
 }
+
 .gallery>img {
     width: 100%;
+}
+
+.masthead {
+    padding-top: 1.2rem;
+    text-align: center;
+}
+
+.event-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.slug-css {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.event-image {
+    vertical-align: middle;
+    border-style: none;
+    height: 46vh;
+    object-fit: none;
+}
+
+.p-comments {
+height: auto;
+border: 2px;
+}
+
+.comments-section {
+    width: 82%;
+}
+
+.events {
+    max-height: 33%;
 }
 
 @media only screen and (max-width: 768px) {
 
     /* Add CSS rules for screens smaller than 768px */
-    nav ul {
-        flex-direction: column;
-    }
-
-    nav ul li {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
 
     #all-blogs {
         grid-template-columns: auto auto;
@@ -235,7 +260,15 @@ a {
     }
 }
 
+.card-img-top {
+    height: 17rem;
+    
+}
 
+.card-body {
+    padding: 0.25rem;
+    text-align: center;
+}
 
 
 #all-blogs {
@@ -244,114 +277,4 @@ a {
 
 .game-area {
     background-position: center;
-}
-}
-
-@media only screen and (max-width: 576px) {
-
-    /* Add CSS rules for screens smaller than 576px */
-    nav {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul {
-        margin-top: 10px;
-    }
-
-    #all-blogs {
-        grid-template-columns: auto;
-    }
-
-    .game-container {
-        width: 80%;
-    }
-}
-
-@media (max-width: 527px) {
-    body {
-        font-size: 16px;
-        /* or adjust to a size that looks better on smaller screens */
-        line-height: 1.2;
-        /* or adjust to a line height that looks better on smaller screens */
-        /* any other relevant styles that need adjusting for smaller screens */
-    }
-}
-
-@media (max-width: 527px) {
-    .carousel-item p {
-        font-size: 20px;
-        /* or adjust to a size that looks better on smaller screens */
-        line-height: 1.2;
-        /* or adjust to a line height that looks better on smaller screens */
-        /* any other relevant styles that need adjusting for smaller screens */
-    }
-}
-
-@media (max-width: 400px) {
-    .carousel-item p {
-        font-size: 18px;
-        /* or adjust to a size that looks better on smaller screens */
-        line-height: 1.2;
-        /* or adjust to a line height that looks better on smaller screens */
-        /* any other relevant styles that need adjusting for smaller screens */
-    }
-}
-
-
-/* CSS for dropdown menu */
-@media screen and (max-width: 767px) {
-    .navbar-nav li {
-        display: block;
-    }
-
-    .navbar-nav .dropdown-menu {
-        display: none;
-    }
-
-    .navbar-nav .dropdown-menu.show {
-        display: block;
-    }
-}
-
-/* CSS for dropdown toggle button */
-@media screen and (max-width: 767px) {
-    .navbar-toggler {
-        display: block;
-    }
-
-    .navbar-toggler:focus {
-        outline: none;
-    }
-}
-
-/* CSS for dropdown menu items */
-@media screen and (max-width: 767px) {
-    .dropdown-menu a {
-        display: block;
-        text-align: left;
-    }
-}
-
-/* CSS for dropdown menu arrow */
-@media screen and (max-width: 767px) {
-    .dropdown-toggle::after {
-        display: inline-block;
-        margin-left: .255em;
-        vertical-align: .255em;
-        content: "";
-        border-top: .3em solid;
-        border-right: .3em solid transparent;
-        border-bottom: 0;
-        border-left: .3em solid transparent;
-    }
-}
-
-/* CSS for active dropdown menu item */
-@media screen and (max-width: 767px) {
-
-    .dropdown-item.active,
-    .dropdown-item:active {
-        background-color: #007bff;
-    }
 }
