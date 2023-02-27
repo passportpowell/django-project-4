@@ -33,7 +33,6 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 ALLOWED_HOSTS = ["django-project-4.herokuapp.com", "localhost"]
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
-X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # Application definition
 
