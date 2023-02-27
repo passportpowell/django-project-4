@@ -304,5 +304,11 @@ Here are some potential features that could be added to the site in the future:
         python manage.py runserver
 
 
+<br>
+<br>
 
 
+# Credits
+- Code institute Fullstack DEvelopmnent course
+- Work from my previous projects
+- Help from the slack code institute community
