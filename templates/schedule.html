@@ -4,111 +4,101 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 {% endblock %}
-
 {% block content %}
-
 <div class="masthead">
-    <div class="container ">
-        <div class="row g-0 ">
-            <div class="col-md-6 masthead-text masthead">
-                <!-- Post title goes in these h1 tags -->
-                <h1 class="post-title">{{ event.title }}</h1>
-                <!-- Post author goes before the | the post's created date goes after -->
-                <p class="post-subtitle">{{ event.organiser }} | {{ event.time_date }}</p>
-                <hr/>
-                <div  class="event-info">
-                <p>
-                    {{ event.event_info | safe }}
-                </p>
+   <div class="container ">
+      <div class="row g-0 ">
+         <div class="col-md-6 masthead-text masthead">
+            <!-- Post title goes in these h1 tags -->
+            <h1 class="post-title">{{ event.title }}</h1>
+            <!-- Post author goes before the | the post's created date goes after -->
+            <p class="post-subtitle">{{ event.organiser }} | {{ event.time_date }}</p>
+            <hr/>
+            <div  class="event-info">
+               <p>
+                  {{ event.event_info | safe }}
+                  <hr/>
+                  <hr/>
+                  Address: {{ event.location | safe }}
+               </p>
             </div>
-                
-            </div>
-            <div class="d-none d-md-block col-md-6 masthead-image">
-                <!-- The featured image URL goes in the src attribute -->
-                {% if "placeholder" in event.featured_image.url %}
-                <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
-                {% else %}
-                <img src=" {{ event.featured_image.url }}" width="100%" class="event-image">
-                {% endif %}
-            </div>
-        </div>
-    </div>
+         </div>
+         <div class="d-none d-md-block col-md-6 masthead-image">
+            <!-- The featured image URL goes in the src attribute -->
+            {% if "placeholder" in event.featured_image.url %}
+            <img src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" width="100%">
+            {% else %}
+            <img src=" {{ event.featured_image.url }}" width="100%" class="event-image">
+            {% endif %}
+         </div>
+      </div>
+   </div>
 </div>
-
 <div class="container comments-section">
-    <div class="row">
-        <div class="col card mb-4  mt-3 left  top">
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 p-comments">
-            <h3>Comments:</h3>
-            <div class="card-body">
-                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
-                {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
-                        {{ comment.user }}
-                        <span class=" text-muted font-weight-normal">
-                            <!-- The comment's created date goes here -->
-                            {{ comment.created_at }}
-                        </span> wrote:
-                    </p>
-                    <!-- The body of the comment goes before the | -->
-                    {{ comment.posted_comment | linebreaks }}
-                </div>
-                <!-- Our for loop ends here -->
-                {% endfor %}
+   <div class="row">
+      <div class="col card mb-4  mt-3 left  top">
+      </div>
+   </div>
+   <div class="row">
+      <div class="col">
+         <hr>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-md-8 card mb-4  mt-3 p-comments">
+         <h3>Comments:</h3>
+         <div class="card-body">
+            <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
+            {% for comment in comments %}
+            <div class="comments" style="padding: 10px;">
+               <p class="font-weight-bold">
+                  <!-- The commenter's name goes here. Check the model if you're not sure what that is -->
+                  
+                  <span class=" text-muted font-weight-normal">
+                     <!-- The comment's created date goes here -->
+                     {{ comment.created_at }} | {{ user.username }}
+                  </span>
+                  wrote:
+               </p>
+               <!-- The body of the comment goes before the | -->
+               {{ comment.posted_comment | linebreaks }}
             </div>
-        </div>
-        <div class="col-md-4 card mb-4  mt-3 ">
-            <div class="card-body">
-                <!-- For later -->
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
-                {% else %}
-                {% if user.is_authenticated %}
-
-                <h3>Leave a comment:</h3>
-                <p>Commented By: {{ user.username }}</p>
-                <form method="post" style="margin-top: 1.3em;">
-                    {{ comment_form | crispy }}
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                </form>
-                {% endif %}
-                {% endif %}
+            <!-- Our for loop ends here -->
+            {% endfor %}
+         </div>
+      </div>
+      <div class="col-md-4 card mb-4  mt-3 ">
+         <div class="card-body">
+            <!-- For later -->
+            {% if commented %}
+            <div class="alert alert-success" role="alert">
+               Your comment is awaiting approval
             </div>
-        </div>
-    </div>
+            {% else %}
+            {% if user.is_authenticated %}
+            <h3>Leave a comment:</h3>
+            <p>Commented By: {{ user.username }}</p>
+            <form method="post" style="margin-top: 1.3em;">
+               {{ comment_form | crispy }}
+               {% csrf_token %}
+               <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+            </form>
+            {% endif %}
+            {% endif %}
+         </div>
+      </div>
+   </div>
 </div>
-
-
-
-
-
-
 <div>
-    <ul>
-        {% for event in object_list %}
-            <li>
-            {{event.featured_image.url}}
-             {{ event.title }} - {{ event.time_date }}<br/>
-             {{ event.event_info }}  
-             {{ event.location }}
-            </li>
-    </ul>
+   <ul>
+      {% for event in object_list %}
+      <li>
+         {{event.featured_image.url}}
+         {{ event.title }} - {{ event.time_date }}<br/>
+         {{ event.event_info }}  
+         {{ event.location }}
+      </li>
+   </ul>
 </div>
-
 {% endfor %}
-
 {%endblock%}

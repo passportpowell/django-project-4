@@ -1,133 +1,119 @@
-{% load static %}
-<!DOCTYPE html>
+{% load static %}  <!-- Load static files -->
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
-        <title>Passport Powell</title>
-        <!-- Fonts -->
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-
-
-    
-      </head>
-    
-
-    <body class="d-flex flex-column h-100 main-bg">
-        <!-- Navigation -->
-
-        <!-- {% include 'navbar.html' %} -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-               <a class="navbar-brand" href="{% url 'home' %}">BIRMINGHAM'S TRAVELERS MEET UP</a>
-
-                <!-- HEader -->
-                <div class="navbar-header">
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">                    
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                        {% comment %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if page == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
-                        </li>
-                        {% endcomment %}
-                        <!-- If user is authenticated, display Logout link, else display Register and Login links -->
-                      
-                        <li class="">
-                            <a href="{% url 'Game' %}">Quiz</a>
-                        </li>
-
-                        <!-- Gallery link -->
-                        <li class="">
-                            <a href="{% url 'gallery' %}" aria-label="Go to Gallery page (opens in current tab)">Gallery</a>
-                        </li>
-
-                        <!-- Events link (commented out) -->
-                        <li class="">
-                            <a href="#anchor-name">Events</a>
-                        </li>
-              
-                        {% if user.is_authenticated %}
-
-                       <ul>
-                        <li class="active">
-                            <a class="nav-link" href="{% url 'account_logout' %}"> {{ user.username }} </a>
-                        </li>
-                        {% else %}
-
-
-                        <li class="n">
-                            <a href="{% url 'account_signup' %}"> Register </a>
-                        </li>
-
-
-                        <li class="">
-                            <a href="{% url 'account_login' %}"> Login </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0" />
+      <title>Passport Powell</title>
+      <!-- Fonts -->
+      <!-- Font Awesome Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />  <!-- Load custom CSS -->
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+   </head>
+   <body class="d-flex flex-column h-100 main-bg">  <!-- Set up the body -->
+      <!-- Navigation -->
+      <!-- {% include 'navbar.html' %} -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  <!-- Create a navigation bar -->
+         <div class="container-fluid">
+         <a class="navbar-brand" href="{% url 'home' %}">BIRMINGHAM'S TRAVELERS MEET UP</a>  <!-- Create a navigation bar brand -->
+         <!-- Header -->
+         <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">                    
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               {% comment %}  <!-- Comment out a section of code -->
+               <li class="nav-item">
+                  <a class="nav-link {% if page == 'home' %}active{% endif %}" aria-current="page" href="{% url 'home' %}">Home</a>
+               </li>
+               {% endcomment %}
+               <li class="">
+                  <a href="{% url 'Game' %}">Quiz</a>  <!-- Add a link to a quiz page -->
+               </li>
+               <!-- Gallery link -->
+               <li class="">
+                  <a href="{% url 'gallery' %}" aria-label="Go to Gallery page (opens in current tab)">Gallery</a>  <!-- Add a link to a gallery page -->
+               </li>
+               <!-- Events link (commented out) -->
+               <li class="">
+                  <a href="#anchor-name">Events</a>
+               </li>
+               
+               <!-- If user is authenticated, display Logout link, else display Register and Login links -->            
+               {% if user.is_authenticated %}  <!-- Check if the user is authenticated -->
+               <ul>
+                  <li class="active">
+                     <a class="nav-link" href="{% url 'account_logout' %}"> {{ user.username }} </a>
+                  </li>
+                  {% else %}
+                  <li class="n">
+                     <a href="{% url 'account_signup' %}"> Register </a>
+                  </li>
+                  <li class="">
+                     <a href="{% url 'account_login' %}"> Login </a>
+                  </li>
+                  {% endif %}
+               </ul>
             </div>
-        </nav>
+         </div>
+      </nav>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 offset-md-2">
-                    {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
-                        {{ message | safe }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endfor %}
-                </div>
+     <!-- <div class="alert alert-success {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+         <div>
+           An example success alert with an icon
+         </div>
+       </div> -->
+
+      <div class="container">
+         <div class="row">
+            <div class="col-md-8 offset-md-2">
+               {% for message in messages %}
+               <div class="alert alert-success {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                                   {{ message | safe }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>
+               {% endfor %}
             </div>
-        </div>
-        <main class="flex-shrink-0 main-bg">
-            {% block content %}
-            <!-- Content Goes here -->
-            {% endblock content %}
-        </main>
-        <!-- Footer -->
-        <footer class="footer mt-auto py-3 bg-dark text-center">
-            <p class="m-0 text-center text-white d-flex justify-content-center socials">
-                Follow us:
-                <li>
-                    <a href="https://facebook.com/passportpowell" class="text-muted"> <i class="fab fa-facebook-f fa-lg me-2" style="color: #3b5998; margin-right: 15px;"></i>Facebook </a>
-                </li>
-                <li>
-                    <a href="https://instagram.com/passportpowell/" class="text-muted"> <i class="fab fa-instagram fa-lg me-2" style="color: #ac2bac; margin-right: 15px;"></i>Instagram </a>
-                </li>
-                <li>
-                    <a href="https://youtube.com/otisofro2" class="text-muted"> <i class="fab fa-youtube fa-lg me-2" style="color: #ff0000; margin-right: 15px;"></i>Youtube </a>
-                </li>
-            </p>
-        </footer>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            setTimeout(function() {
-                let messages = document.getElementById('msg');
-                let alert = new bootstrap.Alert(messages);
-                alert.close();
-            }, 1500);
-        </script>
-        <script src="https://kit.fontawesome.com/d5114a4b10.js" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="{% static 'script.js' %}"></script>
-
-        
-    </body>
+         </div>
+      </div>
+      <main class="flex-shrink-0 main-bg">
+         {% block content %}
+         <!-- Content Goes here -->
+         {% endblock content %}
+      </main>
+      <!-- Footer -->
+      <footer class="footer mt-auto py-3 bg-dark text-center">
+         <p class="m-0 text-center text-white d-flex justify-content-center socials">
+            Follow us:
+         <li>
+            <a href="https://facebook.com/passportpowell" class="text-muted"> <i class="fab fa-facebook-f fa-lg me-2" style="color: #3b5998; margin-right: 15px;"></i>Facebook </a>
+         </li>
+         <li>
+            <a href="https://instagram.com/passportpowell/" class="text-muted"> <i class="fab fa-instagram fa-lg me-2" style="color: #ac2bac; margin-right: 15px;"></i>Instagram </a>
+         </li>
+         <li>
+            <a href="https://youtube.com/otisofro2" class="text-muted"> <i class="fab fa-youtube fa-lg me-2" style="color: #ff0000; margin-right: 15px;"></i>Youtube </a>
+         </li>
+         </p>
+      </footer>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+         setTimeout(function() {
+             let messages = document.getElementById('msg');
+             let alert = new bootstrap.Alert(messages);
+             alert.close();
+         }, 2500);
+      </script>
+      <script src="https://kit.fontawesome.com/d5114a4b10.js" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="{% static 'script.js' %}"></script>
+   </body>
 </html>
