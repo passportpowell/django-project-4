@@ -3,7 +3,7 @@
 
 This is a simple blog application built using Django. It allows users to create, read, update and delete blog posts, and also allows commenting and attending events. The application also integrates with Cloudinary for image uploads.
 
-![Responsive Image](https://github.com/passportpowell/Passport-Powell/blob/main/readme-images/amiresponsive_old.jpg)
+![Responsive Image](https://github.com/passportpowell/django-project-4/blob/main/media/Readme%20Images/am%20i%20responsive.png)
 
 # User experience
 
