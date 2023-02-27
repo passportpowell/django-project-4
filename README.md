@@ -236,6 +236,12 @@ Here are some potential features that could be added to the site in the future:
 
   - solution: search stackoverflow saw the option to use apache/nginx/white and went with whitenoise.
 
+<br><br>
+
+- issue: events wont show user name of comments unless logged in.
+
+  - solution: unsure of how to change it
+
 <br>
 
 <br>
