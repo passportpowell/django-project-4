@@ -232,6 +232,14 @@ Here are some potential features that could be added to the site in the future:
 
 <br>
 
+- issue: Heroku wont load static files
+
+  - solution: search stackoverflow saw the option to use apache/nginx/white and went with whitenoise.
+
+<br>
+
+<br>
+
 # Installation and Deployment
 - Clone the repository
  

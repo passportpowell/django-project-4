@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&display=swap");
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+    font-family: "satisfy", cursive;
+}
+
+li > a {
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Roboto Slab", serif;
+    font-weight: 600;
+    color: #9e9e9e;
+    font-size: 25px;
+}
+
+/* Styling for the carousel captions */
+.carousel-caption {
+    position: absolute;
+    top: 50px;
+    /* adjust this value to position the caption below the nav bar */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+/* Styling for the carousel images */
+.carousel-item img {
+    width: 100vw;
+    object-fit: cover;
+    object-position: -20% 0;
+    max-height: 90vh;
+}
+
+.carousel-item p {
+    margin-top: -2rem;
+    font-size: 1.5rem;
+}
+
+/* Styling for the game section */
+.game-area {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: url(/static/images/europe.webp);
+}
+
+/* Styling for game-related elements */
+.display-1 {
+    font-size: 3rem;
+}
+
+.game-container {
+    border: 3px double #4aa6e0;
+    color: #4aa6e0;
+    width: 50%;
+    background-color: rgba(52, 58, 64, 0.9);
+}
+
+#results-display {
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+    padding: 5px;
+    border: 3px double #4aa6e0;
+}
+
+/* Styling for footer */
+footer {
+    text-align: center;
+}
+
+footer > h3,
+h4 {
+    color: #000000;
+}
+
+/* Styling for the game controls */
+#display {
+    text-align: center;
+    font-size: 30px;
+    margin: auto;
+}
+
+.score {
+    text-align: center;
+    font-size: 15px;
+}
+
+.player-name {
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.choices-area {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    padding: 5px;
+    width: 95%;
+    height: 75px;
+    background-color: #9eb1b3;
+    border: 3px double #4aa6e0;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.options {
+    width: 24%;
+    font-size: large;
+    background-color: #4aa6e0;
+    border: 3px double #000000;
+    text-align: center;
+}
+
+.reset {
+    font-size: 22px;
+    color: #000000;
+    width: 28%;
+    background-color: #4aa6e0;
+    border: 3px double #000000;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.reset:hover {
+    background-color: #0000ff;
+}
+
+a {
+    text-decoration: none;
+    padding-top: 2%;
+}
+
+.reset-skip-area {
+    width: 95%;
+    height: 75px;
+    margin: 0 auto;
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #c7dddf;
+    border: 3px double #4aa6e0;
+    color: #00ffff;
+    background-color: rgba(46, 46, 46, 0.1);
+}
+
+/* For js to color right and wrong answers */
+.Right {
+    background-color: #008000;
+}
+
+.Wrong {
+    background-color: #ff0000;
+}
+
+.gallery {
+    clear: both;
+    line-height: 0;
+    column-count: 4;
+    column-gap: 0;
+}
+
+.gallery > img {
+    width: 100%;
+}
+
+.masthead {
+    padding-top: 1.2rem;
+    text-align: center;
+}
+
+.event-info {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.slug-css {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-image {
+    vertical-align: middle;
+    border-style: none;
+    height: 46vh;
+    object-fit: none;
+}
+
+.p-comments {
+    height: auto;
+    border: 2px;
+}
+
+.comments-section {
+    width: 82%;
+}
+
+.events {
+    max-height: 33%;
+}
+
+@media only screen and (max-width: 768px) {
+    /* Add CSS rules for screens smaller than 768px */
+
+    #all-blogs {
+        grid-template-columns: auto auto;
+    }
+
+    .game-area {
+        background-position: center;
+    }
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 30rem;
+    }
+
+.card-body {
+    padding: 0.25rem;
+    text-align: center;
+    border: double;
+}
+
+#all-blogs {
+    grid-template-columns: auto auto;
+}
+
+.game-area {
+    background-position: center;
+}
+
+
+
+#msg {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1b1d21;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+  
+  .alert-success {
+    background-color: #49b7ad;
+  }
+  
+  .alert-warning {
+    background-color: #ffc20f;
+  }
+  
+  .btn-close {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #fff;
+    opacity: .7;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-close:hover {
+    color: #fff;
+    opacity: 1;
+  }
+  
+  svg {
+    fill: #fff;
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    #msg {
+      font-size: 16px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .game-container {
+      width: 90%;
+    }
+    .choices-area {
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .options {
+      width: 45%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .reset {
+      width: 90%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+  
+  @media (max-width: 395px) {
+    /* Hide the navigation menu on small screens */
+    nav {
+      display: none;
+    }
+  
+    /* Increase the size of the game board */
+    .game-board {
+      width: 100%;
+      height: 100%;
+    }
+  
+    /* Decrease the font size of the game instructions */
+    .game-instructions {
+      font-size: 0.8em;
+    }
+  }
+  

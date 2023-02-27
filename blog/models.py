@@ -20,7 +20,9 @@ class Event(models.Model):
     attending = models.ManyToManyField(User, related_name="attending_event", blank=True)
     published_date = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
+
     featured_image = CloudinaryField("image", default="placeholder")
+    # featured_image = models.ImageField(upload_to='event_images', default='placeholder.jpg')
 
     class Meta:
         ordering = ["-published_date"]
