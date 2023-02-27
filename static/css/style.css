@@ -245,6 +245,7 @@ a {
 .card-body {
     padding: 0.25rem;
     text-align: center;
+    border: double;
 }
 
 #all-blogs {
@@ -306,6 +307,47 @@ a {
   @media screen and (max-width: 768px) {
     #msg {
       font-size: 16px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .game-container {
+      width: 90%;
+    }
+    .choices-area {
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .options {
+      width: 45%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .reset {
+      width: 90%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+  
+  @media (max-width: 395px) {
+    /* Hide the navigation menu on small screens */
+    nav {
+      display: none;
+    }
+  
+    /* Increase the size of the game board */
+    .game-board {
+      width: 100%;
+      height: 100%;
+    }
+  
+    /* Decrease the font size of the game instructions */
+    .game-instructions {
+      font-size: 0.8em;
     }
   }
   
