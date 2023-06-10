@@ -1,3 +1,5 @@
+
+
 {% extends "base.html" %}
 
 {% load i18n %}
@@ -17,7 +19,8 @@
           </div>
           <div class="card-body mt-3">
               <form class="signup" id="signup_form" method="post" action="/accounts/signup/">
-                  <input type="hidden" name="csrfmiddlewaretoken" value="JGmGuFvEtfDQrWitnvtvGjddyxKrb0W7wYRwGMw156jZuuJN00jechDeZ9mN6KfD">
+                  {% csrf_token %}
+                  
                   <div class="form-group">
                       <label for="id_username">Username:</label> 
                       <input type="text" name="username" class="form-control" placeholder="Username" autocomplete="username" minlength="1" maxlength="150" required="" id="id_username">
@@ -38,7 +41,8 @@
               </form>
           </div>
       </div>
+    </div>
   </div>
-  
+</div>
 
 {% endblock %}

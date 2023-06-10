@@ -30,3 +30,4 @@ urlpatterns = [
     # path("", include("blog.urls"), name="blog-urls"),
 
 ]
+

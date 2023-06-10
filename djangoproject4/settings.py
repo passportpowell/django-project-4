@@ -30,7 +30,11 @@ DEBUG = True
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
 
-ALLOWED_HOSTS = ["django-project-4.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = [
+    "django-project-4.herokuapp.com",
+    "localhost",
+    "8000-passportpow-djangoproje-slj8fkxeb9d.ws-eu99.gitpod.io",
+]
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 X_FRAME_OPTIONS = "SAMEORIGIN"
