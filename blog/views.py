@@ -113,11 +113,12 @@ def make_booking(request):
             booking = form.save(commit=False)
             booking.user = request.user
             booking.save()
-            return redirect('templates/bookings/')
+            return redirect('/bookings')
     else:
         form = BookingForm()
 
-    return render(request, 'templates/bookings/create_booking.html', {"form": form})
+    return render(request, 'bookings/create_booking.html', {"form": form})
+
 
 def edit_booking(request, pk):
     booking = Booking.objects.get(id=pk)
@@ -133,9 +134,9 @@ def edit_booking(request, pk):
                 booking.save()
                 return redirect('/bookings')
         context = {'form': form}
-        return render(request, 'templates/bookings/edit_booking.html', {"form": form})
+        return render(request, 'bookings/edit_booking.html', {"form": form})
     else:
-        return render(request, 'templates/bookings/404.html')
+        return render(request, 'bookings/404.html')
 
 
 

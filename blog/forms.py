@@ -11,4 +11,4 @@ class CommentForm(forms.ModelForm):
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ('event', 'user', 'booking_date', 'status')
+        fields = ('event',)
