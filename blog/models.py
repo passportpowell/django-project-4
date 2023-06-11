@@ -37,24 +37,14 @@ class Event(models.Model):
         super().save(*args, **kwargs)
 
 
-class Attendee(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.user.username} - {self.event.name}"
-
-
 class Booking(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     booking_date = models.DateTimeField(default=datetime.now)
-    status = models.IntegerField(choices=STATUS, default=0)
-
+    # status = models.IntegerField(choices=STATUS, default=0)
 
     def __str__(self):
         return f"{self.user.username} - {self.event.title}"
-
 
 
 class UserComment(models.Model):
@@ -85,11 +75,6 @@ class UserComment(models.Model):
 #     solution: was to change the method of likes_count to def likes_count(self, *, manager):
 
 
-from django.db import models
-from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
-from django.urls import reverse
-from datetime import datetime
 
 
 # STATUS = ((0, "Draft"), (1, "Published"))
@@ -117,10 +102,11 @@ from datetime import datetime
 #         return self.title
 
 #     def attending_count(self, *, manager):
-#         return self.attending.count()
+#         return self.attending()
 
 #     def save(self, *args, **kwargs):
 #         super().save(*args, **kwargs)
+
 
 
 # class Attendee(models.Model):
@@ -155,3 +141,12 @@ from datetime import datetime
 #     def __str__(self):
 #         return f"UserComment {self.posted_comment} by {self.user}"
 
+# class Booking(models.Model):
+#     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     booking_date = models.DateTimeField(default=datetime.now)
+#     status = models.IntegerField(choices=STATUS, default=0)
+
+
+#     def __str__(self):
+#         return f"{self.user.username} - {self.event.title}"

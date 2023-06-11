@@ -1,4 +1,4 @@
-from .models import Event, UserComment, Attendee, Booking
+from .models import Event, UserComment, Booking
 from .forms import CommentForm
 from django.views import generic, View
 from django.http import HttpResponseRedirect
@@ -28,6 +28,8 @@ class EventDetails(View):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
         user_comments = event.usercomments.filter(approved=True).order_by("created_at")
+        description = event.event_info
+
         attending = False
         if self.request.user.is_authenticated:
             if event.attending.filter(id=self.request.user.id).exists():
@@ -105,7 +107,19 @@ class BookingView(View):
 
         return HttpResponseRedirect(reverse("upcoming", args=[slug]))
 
+@login_required(login_url="/login")
+def bookings(request):
+    user = request.user
+    bookings = Booking.objects.filter(user=user)
+    if request.method == "POST":
+        booking_id = request.POST.get("booking-id")
+        booking = Booking.objects.filter(id=booking_id)
+        booking.delete()
 
+    return render(request, 'bookings/bookings.html', {"bookings": bookings})
+
+
+@login_required(login_url="login")
 def make_booking(request):
     if request.method == 'POST':
         form = BookingForm(request.POST)
@@ -138,7 +152,10 @@ def edit_booking(request, pk):
     else:
         return render(request, 'bookings/404.html')
 
+def create_booking(request):
+    bookings = Booking.objects.all() 
 
+    return render(request, 'bookings/create_booking.html', {'bookings': bookings})
 
 # Use class for the views.py as you can make the view reusable
 

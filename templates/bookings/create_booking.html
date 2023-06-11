@@ -1,9 +1,76 @@
-{% extends 'base.html' %} {% block title %} Make a Booking {% endblock %} 
+{% extends 'bookings/base.html' %}
+
+{% block title %}Make a Booking{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="post" class="text-center my-form">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Book</button>
+    <button class="btn btn-secondary btn-danger" type="button" onclick="window.history.back();">Cancel</button>
+  </form>
+
+  <h2>Your Bookings</h2>
+  <div class="row justify-content-between justify-content-around">
+    {% for booking in bookings %}
+    <div class="card cards d-flex justify-content-center p-3 text-center" id="card" >
+      <h2 class="card-header"><strong><u>{{ booking.event.title }}</u></strong></h2>
+      <div class="card-body d-flex flex-row justify-content-between">
+          <div class="text-center">
+              <h4 class="card-title">Event: {{ booking.event.title }}</h4>
+              <h4 class="card-title">Booking Date: {{ booking.booking_date }}</h4>
+          </div>
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+        <a class="btn btn-info" href="{% url 'edit_booking' booking.id %}">Edit</a>
+        <button type="submit" class="btn btn-danger" name="booking-id" value="{{ booking.id }}">Delete</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  
+  </div>
+
+
+  
+{% endblock %}
+
+
+
+{% comment %} {% extends 'bookings/base.html' %} {% block title %} Make a Booking {% endblock %} 
 {% load crispy_forms_tags %} {% block content %}
 <form method="post" class="text-center my-form">
   {% csrf_token %}{{form|crispy}}
   <button type="submit" class="btn btn-success">Book</button>
   <button class="btn btn-secondary btn-danger" type="button" onclick="window.history.back();">Cancel</button>
 
+
+  
+
+  <h2>Your Bookings</h2>
+    <div class="row justify-content-between justify-content-around">
+      {% for booking in bookings %}
+      <div class="card cards d-flex justify-content-center p-3 text-center" id="card" >
+        <h2 class="card-header"><strong><u>{{ booking.event.title }}</u></strong></h2>
+        <div class="card-body d-flex flex-row justify-content-between">
+          <div class="text-center">
+            <h4 class="card-title"> {{ booking.event}}</h4>
+            <h4 class="card-title"> {{ booking.booking_date}}</h4>
+          </div>
+          
+        </div>
+        <form method="POST">
+          {% csrf_token %}
+          <a class="btn btn-info" href="{% url 'edit_booking' booking.id %}">Edit</a>
+          <button type="submit" class="btn btn-danger" name="booking-id" value="{{booking.id}}">Delete</button>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
 </form>
-{% endblock %}
+{% endblock %} {% endcomment %}
