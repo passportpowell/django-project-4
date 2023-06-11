@@ -1,10 +1,14 @@
 
 # Django Blog App
 
-This is a simple blog application built using Django. It allows superusers to create, read, update and delete blog posts, and allows normal users to view upcoming events, pictures and comment. The application also integrates with Cloudinary for image uploads.
 
 ![Responsive Image](https://github.com/passportpowell/django-project-4/blob/main/media/Readme%20Images/am%20i%20responsive.png?raw=true)
 
+The purpose of this project is to create a simple blog application using Django. The application allows superusers to create, read, update, and delete blog posts. Normal users can view upcoming events, pictures, and leave comments. The application also integrates with Cloudinary for image uploads.
+
+The project aims to provide a user-friendly experience for both new and returning users. New users should be able to easily navigate the website, find relevant information on different travel events and experiences in and around Birmingham, UK, access information that can be read in a short amount of time, find events to plan on a budget, and leave comments on events.
+
+Returning users should be able to quickly access the features they're interested in, such as browsing new events or searching for specific activities, access premium content like travel guides and recommendations, create an account and log into their account, and play a quiz on the website.
 # User experience
 
 ### New User Stories
@@ -56,6 +60,24 @@ The footer section includes links to the social media sites and the links will o
 
 ![Responsive Image](https://github.com/passportpowell/django-project-4/blob/main/media/Readme%20Images/Am%20I%20Footer.png?raw=true)
 
+# Future Features
+- Profile Pictures: Currently, there is no way to add to add profile pictures & profile system. In the future, users could create accounts and have personalized experiences.
+
+- Search functionality: The site currently only displays the most recent events on the home page. Adding search functionality would allow users to easily find events based on keywords, dates, or categories.
+
+- Sign up using social media: Integrating social media sign-up options would allow users to register using their existing social media accounts.
+
+- User-generated content: Implementing a system for user-generated content would enable users to participate in community discussions, share their experiences, and contribute to the blog's content.
+
+- Social media integration: Adding social media integration would allow users to easily share posts on their social media accounts and increase the site's visibility.
+
+- Multi-language support: Adding multi-language support would allow the site to reach a wider audience and provide content in different languages for users who prefer to read articles in languages other than English.
+
+- Newsletter subscription: Allowing users to subscribe to a newsletter featuring the latest events and updates would help to keep users engaged and informed.
+
+- Interactive maps: Creating interactive maps with points of interest or travel routes that users can click on to access articles and information would enhance the user experience and provide additional valuable content.
+
+- Video content: Adding video content to the blog, showcasing destinations, events, and travel experiences, would provide users with a more immersive and engaging experience
 
 # Testing
 - Functionality testing:
@@ -73,6 +95,15 @@ have validated the CSS using the W3C CSS Validator. The following badge indicate
 - Lighthouse in developer settings:
 
 ![Responsive Image](https://github.com/passportpowell/django-project-4/blob/main/media/Readme%20Images/Lighthouse%20Desktop.png?raw=true)
+
+
+## Booking system
+- booking scenarios: 
+    
+    - User should not be able to book the same event more than once.
+    ![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686500742/1_already_booked_okuxko.png)
+    - User should be able to delete a booking they have made.
+    ![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686501158/1_delete_booking_pwztdw.png)
 
 
 # Design
@@ -144,8 +175,8 @@ Here are some potential features that could be added to the site in the future:
 # Technology
 ### Languages Used
 
-- Python 3.8
-- Django 3.2.5
+- Python 
+- Django 
 - HTML
 - CSS
 - JavaScript

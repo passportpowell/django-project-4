@@ -6,8 +6,7 @@
 {% endblock %} 
 
 {% block content %}
-<!-- This code extends the 'base.html' template and loads crispy forms tags and static files. 
-   The 'head' block adds a link to a stylesheet. The 'content' block begins here. -->
+
 <div class="game-area">
    <div class="game-container">
       <div class="result"></div>
@@ -33,15 +32,11 @@
    </div>
 </div>
 <hr>
-<!-- This code inserts a horizontal line. -->
 <div class="text-center">
    <h1 class="mb-4">Capital Cities Quiz</h1>
    <h3 class="mb-3">Test Your Capital Cities Knowledge With Our Short Quiz!</h3>
    <h4 class="mb-4">10 Questions! Can You Get 50 Points?</h4>
 </div>
-<!-- This section contains a header with a quiz title, description and a question count. -->
 
 <script type="text/javascript" src="{% static 'script.js' %}"></script>
 {% endblock %}
-<!-- This code loads a JavaScript file from the static folder. The 'content' block ends here. --> {% comment %} to fix - js wouldn't load, was receiving server 500 error fixed by:turnning debug on and finding that i had not put my load static and js static in the correct places {% endcomment %}
-<!-- This is a comment about a fix to a JavaScript error. -->

@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %} 
 {% load static %}  
 {% block content %}
-<!-- Carousel with a hero image and a caption -->
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
    <div class="carousel-inner">
       <div class="carousel-item active">
@@ -15,7 +14,6 @@
       </div>
    </div>
 </div>
-<!-- Container with rows of event cards -->
 <div class="container-fluid">
    <div class="row">
       <div class="col-12 mt-3 left events">
@@ -26,15 +24,12 @@
                   <div class="card-body">
                      <div class="image-container">
                         {% if "placeholder" in event.featured_image.url %}
-                        <!-- If no image is available, display a default image -->
                         <img class="card-img-top" src="https://codeinstitute.s3.amazonaws.com/fullstack/blog/default.jpg" alt="placeholder image"> {% else %}
-                        <!-- Display the event's featured image -->
                         <img class="card-img-top" src=" {{ event.featured_image.url }}"> {% endif %} 
                         <div class="image-flash">
                            <p class="author">Organiser: {{ event.organiser }}</p>
                         </div>
                      </div>
-                     <!-- Link to the event's detail page -->
                      <a href="{% url 'upcoming' event.slug  %}" class="post-link" id="anchor-name">
                         <h2 class="card-title">{{ event.title }}</h2>
                         <hr />

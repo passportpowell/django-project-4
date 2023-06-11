@@ -1,3 +1,11 @@
+"""
+This code registers the Event, UserComment, and Booking 
+models with the Django admin site and defines custom admin 
+classes for each model with specific configurations for 
+display, filtering, searching, and actions.
+"""
+
+
 from django.contrib import admin
 from .models import Event, UserComment, Booking
 from django_summernote.admin import SummernoteModelAdmin

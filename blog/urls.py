@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from blog.views import delete_booking
+
 
 urlpatterns = [
     path("", views.EventList.as_view(), name="home"),
@@ -12,6 +14,10 @@ urlpatterns = [
     path("past-meets.html", views.PastMeetsView.as_view(), name="gallery"),
     path("book/<slug:slug>/", views.BookingView.as_view(), name="book_event"),
     path("edit-booking/<str:pk>/", views.edit_booking, name="edit_booking"),
+    path('bookings/delete/<int:booking_id>/', delete_booking, name='delete_booking'),
+    path('bookings/', views.bookings, name='bookings'),
+
+
 ]
 
 
