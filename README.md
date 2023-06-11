@@ -98,12 +98,11 @@ have validated the CSS using the W3C CSS Validator. The following badge indicate
 
 
 ## Booking system
-- booking scenarios: 
     
-    - User should not be able to book the same event more than once.
-    ![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686500742/1_already_booked_okuxko.png)
-    - User should be able to delete a booking they have made.
-    ![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686501158/1_delete_booking_pwztdw.png)
+  - User should not be able to book the same event more than once.
+  ![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686500742/1_already_booked_okuxko.png)
+  - User should be able to delete a booking they have made.
+  ![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686501158/1_delete_booking_pwztdw.png)
 
 
 # Design
@@ -129,7 +128,7 @@ Overall, the design of the travel blog provides a professional, user-friendly ex
 
 # Django admin panel
 
--  ![Responsive Image](https://github.com/passportpowell/django-project-4/blob/main/media/Readme%20Images/Am%20I%20Django%20admin.png?raw=true)
+![Responsive Image](https://res.cloudinary.com/dbqkng7cd/image/upload/v1686502655/1_admin_ffvqbs.png)
 
 - Managing User Accounts: The admin panel allows the super user (SU) to create, modify, and delete user accounts:
 
