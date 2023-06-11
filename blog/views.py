@@ -183,14 +183,3 @@ class GameView(View):
     def get(self, request):
         context = {"page": "game"}
         return render(request, "game.html", context)
-
-
-
-# to fix - AttributeError at /event-test-this-is-the-slug/
-# 'ManyToManyDescriptor' object has no attribute 'filter'
-#     fixed by - changed code "if Event.likes.filter(id=self.request.user.id).exists():"
-#     by making ht ecapital E into a lower case e
-
-
-
-

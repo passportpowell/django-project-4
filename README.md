@@ -79,6 +79,9 @@ The footer section includes links to the social media sites and the links will o
 
 - Video content: Adding video content to the blog, showcasing destinations, events, and travel experiences, would provide users with a more immersive and engaging experience
 
+## Bugs
+Bugs were documented in the [Project Dashboard](https://github.com/users/passportpowell/projects/3/views/1?layout=table)
+
 # Testing
 - Functionality testing:
 I used Microsoft Edge's developer tools for testing, problem solving problems issues and different screen sizes(inc mobile devices) 
