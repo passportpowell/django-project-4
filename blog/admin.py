@@ -1,7 +1,7 @@
 """
-This code registers the Event, UserComment, and Booking 
-models with the Django admin site and defines custom admin 
-classes for each model with specific configurations for 
+This code registers the Event, UserComment, and Booking
+models with the Django admin site and defines custom admin
+classes for each model with specific configurations for
 display, filtering, searching, and actions.
 """
 
@@ -9,6 +9,7 @@ display, filtering, searching, and actions.
 from django.contrib import admin
 from .models import Event, UserComment, Booking
 from django_summernote.admin import SummernoteModelAdmin
+
 
 @admin.register(Event)
 class EventAdmin(SummernoteModelAdmin):
@@ -22,15 +23,22 @@ class EventAdmin(SummernoteModelAdmin):
     )
     summernote_fields = ("event_info",)
 
+
 @admin.register(UserComment)
 class UserCommentAdmin(admin.ModelAdmin):
-    list_display = ("event", "user", "posted_comment", "created_at", "approved")
+    list_display = (
+        "event",
+        "user",
+        "posted_comment",
+        "created_at",
+        "approved")
     list_filter = ("approved", "created_at")
     search_fields = ("event__title", "posted_comment")
     actions = ["approve_comments"]
 
     def approve_comments(self, request, queryset):
         queryset.update(approved=True)
+
 
 @admin.register(Booking)
 class BookingAdmin(admin.ModelAdmin):

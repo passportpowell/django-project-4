@@ -28,7 +28,8 @@ class EventDetails(View):
     def get(self, request, slug, *args, **kwargs):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
-        user_comments = event.usercomments.filter(approved=True).order_by("created_at")
+        user_comments = event.usercomments.filter(
+            approved=True).order_by("created_at")
         description = event.event_info
 
         attending = False
@@ -54,7 +55,8 @@ class EventDetails(View):
     def post(self, request, slug, *args, **kwargs):
         queryset = Event.objects.filter(status=1)
         event = get_object_or_404(queryset, slug=slug)
-        user_comments = event.usercomments.filter(approved=True).order_by("created_at")
+        user_comments = event.usercomments.filter(
+            approved=True).order_by("created_at")
         attending = False
         if self.request.user.is_authenticated:
             if event.attending.filter(id=self.request.user.id).exists():
@@ -97,6 +99,7 @@ class EventAttendee(View):
 
         return HttpResponseRedirect(reverse("upcoming", args=[slug]))
 
+
 class BookingView(View):
     def post(self, request, slug, *args, **kwargs):
         event = get_object_or_404(Event, slug=slug)
@@ -105,6 +108,7 @@ class BookingView(View):
             booking.save()
 
         return HttpResponseRedirect(reverse("upcoming", args=[slug]))
+
 
 @login_required(login_url="/login")
 def bookings(request):
@@ -142,6 +146,7 @@ def make_booking(request):
     }
     return render(request, 'bookings/create_booking.html', context)
 
+
 def delete_booking(request, booking_id):
     booking = get_object_or_404(Booking, id=booking_id)
     booking.delete()
@@ -167,10 +172,13 @@ def edit_booking(request, pk):
     else:
         return render(request, 'bookings/404.html')
 
-def create_booking(request):
-    bookings = Booking.objects.all() 
 
-    return render(request, 'bookings/create_booking.html', {'bookings': bookings})
+def create_booking(request):
+    bookings = Booking.objects.all()
+
+    return render(request,
+                  'bookings/create_booking.html',
+                  {'bookings': bookings})
 
 
 class PastMeetsView(View):

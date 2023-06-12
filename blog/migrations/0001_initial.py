@@ -19,24 +19,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MyModel',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('my_field', ckeditor.fields.RichTextField()),
             ],
         ),
         migrations.CreateModel(
             name='Event',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=200, unique=True)),
                 ('slug', models.SlugField(max_length=200, unique=True)),
                 ('description', models.TextField()),
                 ('location', models.TextField()),
                 ('published_date', models.DateTimeField(auto_now=True)),
                 ('info', models.TextField()),
-                ('event_image', cloudinary.models.CloudinaryField(default='placeholder', max_length=255, verbose_name='image')),
+                ('event_image', cloudinary.models.CloudinaryField(
+                    default='placeholder', max_length=255, verbose_name='image')),
                 ('excerpt', models.TextField(blank=True)),
-                ('status', models.IntegerField(choices=[(0, 'Draft'), (1, 'Published')], default=0)),
-                ('likes', models.ManyToManyField(blank=True, related_name='event_likes', to=settings.AUTH_USER_MODEL)),
+                ('status', models.IntegerField(choices=[
+                 (0, 'Draft'), (1, 'Published')], default=0)),
+                ('likes',
+                 models.ManyToManyField(blank=True,
+                                        related_name='event_likes',
+                                        to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-published_date'],
@@ -45,11 +52,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Comment',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('user', models.CharField(max_length=50)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('accepted', models.BooleanField(default=False)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='comments', to='blog.event')),
+                ('event',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='comments',
+                                   to='blog.event')),
             ],
             options={
                 'ordering': ['created_at'],
@@ -58,9 +69,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Attendee',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.event')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('event', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='blog.event')),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

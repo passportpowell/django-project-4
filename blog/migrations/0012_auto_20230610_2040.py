@@ -14,13 +14,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='booking',
-            name='status',
-            field=models.IntegerField(choices=[(0, 'Draft'), (1, 'Published')], default=0),
-        ),
-        migrations.AlterField(
-            model_name='usercomment',
-            name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
-        ),
-    ]
+            model_name='booking', name='status', field=models.IntegerField(
+                choices=[
+                    (0, 'Draft'), (1, 'Published')], default=0), ), migrations.AlterField(
+            model_name='usercomment', name='user', field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL), ), ]

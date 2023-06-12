@@ -17,7 +17,8 @@ class Event(models.Model):
     event_info = models.TextField()
     location = models.TextField()
     time_date = models.DateTimeField(blank=True, null=True)
-    attending = models.ManyToManyField(User, related_name="attending_event", blank=True)
+    attending = models.ManyToManyField(
+        User, related_name="attending_event", blank=True)
     published_date = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
 

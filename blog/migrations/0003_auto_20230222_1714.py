@@ -14,12 +14,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserComment',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('user', models.CharField(max_length=50)),
                 ('posted_comment', models.TextField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('accepted', models.BooleanField(default=False)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='usercomments', to='blog.event')),
+                ('event',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='usercomments',
+                                   to='blog.event')),
             ],
             options={
                 'ordering': ['created_at'],
